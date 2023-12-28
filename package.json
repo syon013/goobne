@@ -1,8 +1,8 @@
 {
   "name": "goobne",
   "private": true,
-  "homepage": "https://ryushin0.github.io/goobne",
-  "version": "0.0.1",
+  "homepage": "https://syon013.github.io/goobne",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
