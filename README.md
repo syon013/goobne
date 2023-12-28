@@ -34,5 +34,9 @@
   - <img src="https://img.shields.io/badge/Github-181717?style=flat-square&amp;logo=Github&amp;logoColor=white">
 
 - Communication
+
   - <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&amp;logo=slack&amp;logoColor=white">
   - <a href="https://saber-april-67d.notion.site/f468ac8714da4311b7db217baf2e2760" target="_blank"><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&amp;logo=notion&amp;logoColor=white"></a>
+
+- HomePage
+  - <img src="/screenshot.png">
