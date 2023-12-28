@@ -74,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     cursor : pointer;
+    font-family : "NanumSquareRoundR", "Rubik", sans-serif; 
   }
 `;
 

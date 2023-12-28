@@ -82,7 +82,7 @@ const CartSwiperContainer = styled.div`
   }
 
   .swiper-button-prev {
-    background: url('https://ryushin01.github.io/goobne/images/Cart/arrow-left-short.svg')
+    background: url('https://syon013.github.io/goobne/images/Cart/arrow-left-short.svg')
       no-repeat;
     background-size: contain;
     position: absolute;
@@ -97,7 +97,7 @@ const CartSwiperContainer = styled.div`
   }
 
   .swiper-button-next {
-    background: url('https://ryushin01.github.io/goobne/images/Cart/arrow-right-short.svg')
+    background: url('https://syon013.github.io/goobne/images/Cart/arrow-right-short.svg')
       no-repeat;
     background-size: contain;
     position: absolute;
