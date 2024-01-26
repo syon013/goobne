@@ -2,7 +2,7 @@
   "name": "goobne",
   "private": true,
   "homepage": "https://syon013.github.io/goobne",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

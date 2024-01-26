@@ -166,17 +166,17 @@ const MainGoobtubeContainer = styled.section`
     font-size: 52px;
     font-weight: 800;
     font-family: 'Rubik', sans-serif;
-  }
 
-  ${media.tablet`
+    ${media.tablet`
       top: 5%;
       font-size: 48px;
   `}
 
-  ${media.mobile`
+    ${media.mobile`
       top: 5%;
       font-size: 28px;
   `}
+  }
 `;
 
 const TextContainer = styled.div`
