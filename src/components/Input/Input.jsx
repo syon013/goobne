@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 const Input = ({
   type = 'text',
@@ -60,6 +61,11 @@ const InputWrap = styled.div`
   props를 전달 받으면 지정조건에 따른다 */
   flex-direction: ${({ direction }) =>
     INPUT_WRAP_POSITION_STYLES[direction]?.flexDirection || 'row'};
+
+  ${media.mobile`
+    display: flex;
+    flex-direction: column;
+  `}
 `;
 
 const InputLabel = styled.label`

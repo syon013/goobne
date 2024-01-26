@@ -10,6 +10,7 @@ import { API } from '../../../config';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import styled from 'styled-components';
+import media from '../../../styles/media';
 
 const BigBanner = () => {
   /** BigBanner의 데이터를 받아오기 위한 useState 생성 */
@@ -128,13 +129,26 @@ const TextWrap = styled.div`
   left: 20%;
   transform: translateX(-50%);
   z-index: 999;
+
+  ${media.laptop`
+    top: 50%;
+    left: 28%;
+  `}
+
+  ${media.tablet`
+    top: 50%;
+    left: 25%;
+  `}
+  ${media.mobile`
+    top: 50%;
+    left: 35%;
+  `}
 `;
 
 const TextInnerWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 30px;
   font-weight: bold;
   color: ${props => props.theme.grayscaleA};
   text-shadow: 3px 3px 3px ${props => props.theme.transparentB};
@@ -147,4 +161,24 @@ const TextInnerWrap = styled.div`
   & > span:last-child {
     font-size: 30px;
   }
+
+  ${media.tablet`
+    & > span:first-child {
+      font-size: 32px;
+    }
+
+    & > span:last-child {
+      font-size: 20px;
+    }
+  `}
+
+  ${media.mobile`
+    & > span:first-child {
+      font-size: 22px;
+    }
+
+    & > span:last-child {
+      font-size: 14px;
+    }
+  `}
 `;

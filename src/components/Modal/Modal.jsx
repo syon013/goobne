@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ReactComponent as ModalClose } from '../../svg/Modal/ModalClose.svg';
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 /**
  * Modal props list
@@ -118,6 +119,10 @@ const ModalWrap = styled.div`
   border-radius: 5px;
   background-color: ${props => props.theme.grayscaleA};
   z-index: 20;
+
+  ${media.mobile`
+    width: 300px;
+  `}
 `;
 
 const ModalButton = styled.button`

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../../../styles/media';
 
 /**
  * Chip props list
@@ -59,5 +60,11 @@ const ChipWrap = styled.div`
       background-color: ${props => props.theme.grayscaleH};
       color: ${props => props.theme.grayscaleA};
     }
+
+    ${media.mobile`
+        padding : 7px 7px;
+        font-size : 12px;
+      
+    `}
   }
 `;

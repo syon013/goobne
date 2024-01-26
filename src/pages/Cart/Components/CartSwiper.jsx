@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { customAxios } from '../../../API/API';
+
+import { API } from '../../../config';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 import styled from 'styled-components';
-import { customAxios } from '../../../API/API';
-import { API } from '../../../config';
 
 const CartSwiper = () => {
   //SwiperItem의 값을 받기 위하여 State를 생성합니다.
@@ -40,6 +44,17 @@ const CartSwiper = () => {
         spaceBetween={6}
         slidesPerView={4}
         navigation={true}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
         className="swiperContainer"
       >
         {swiperItem.map(({ id, image, alt, mainTitle }) => (

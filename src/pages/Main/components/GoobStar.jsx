@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Loading from '../../../components/Loading/loading';
+
 import { customAxios } from '../../../API/API';
 import { API } from '../../../config';
 import { ReactComponent as GoobstarIcon } from '../../../svg/Main/MainInstar.svg';
+import Loading from '../../../components/Loading/loading';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+
+import media from '../../../styles/media';
 import styled from 'styled-components';
 
 const GoobStar = () => {
@@ -49,7 +53,29 @@ const GoobStar = () => {
                 <GoobstarIcon /> The Goobstar
               </h2>
             </TitleWrap>
-            <Swiper spaceBetween={50} slidesPerView={7} className="mySwiper">
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={7}
+              breakpoints={{
+                320: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                768: {
+                  slidesPerView: 5,
+                  spaceBetween: 30,
+                },
+                1024: {
+                  slidesPerView: 5,
+                  spaceBetween: 30,
+                },
+                2560: {
+                  slidesPerView: 7,
+                  spaceBetween: 30,
+                },
+              }}
+              className="mySwiper"
+            >
               {goobStarDataList.map(({ id, href, src, alt }) => {
                 return (
                   <SwiperSlide key={id}>
@@ -76,6 +102,14 @@ const GoobStarMainContainer = styled.section`
   width: 100%;
   height: 100vh;
   background-color: ${props => props.theme.grayscaleB};
+
+  ${media.tablet`
+    height : 100%;
+  `}
+
+  ${media.mobile`
+    height : 100%;
+  `}
 `;
 
 const GoobStarInnerWrap = styled.div`
@@ -99,6 +133,19 @@ const SwiperContainer = styled.div`
       border: 2px solid ${props => props.theme.grayscaleH};
     }
   }
+
+  ${media.tablet`
+  & > .mySwiper { 
+    padding : 100px 0 50px 0;
+  }
+  `}
+
+  ${media.mobile`
+  
+  & > .mySwiper { 
+    padding : 80px 0 50px 0;
+  }
+  `}
 `;
 
 const TitleWrap = styled.div`
@@ -124,4 +171,30 @@ const TitleWrap = styled.div`
     height: 64px;
     margin-right: 20px;
   }
+
+  ${media.tablet`
+  
+  & > h2 {
+    font-size: 28px;
+  }
+
+  svg {
+    width: 36px;
+    height: 36px;
+    margin-right: 20px;
+  }
+  `}
+
+  ${media.mobile`
+  
+  & > h2 {
+    font-size: 18px;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+  }
+  `}
 `;

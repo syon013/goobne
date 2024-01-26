@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import LottieComponent from '../LottieComponents/LottieComponents';
+import media from '../../styles/media';
 
 const Loading = () => {
   return (
@@ -21,9 +22,22 @@ const Container = styled.div`
   height: 100vh; /* 화면 전체 높이 */
   z-index: 100;
   background-color: white;
-  h1 {
+
+  & h1 {
     font-size: 40px;
   }
+
+  ${media.tablet`
+    & h1 {
+      font-size: 30px;
+    }
+  `}
+
+  ${media.mobile`
+    & h1 {
+      font-size: 20px;
+    }
+  `}
 `;
 const Test = styled.div`
   display: flex;

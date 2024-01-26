@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
-import styled, { css } from 'styled-components';
+
 import { decrementQuantity, incrementQuantity } from '../../../Redux/Redux';
+
+import styled, { css } from 'styled-components';
 
 /** 리덕스를 이용하여 장바구니에 담긴 상품의 수량을 증가시키거나 감소시키는 컴포넌트 입니다. */
 const CartCount = ({ id, radioData, size, count }) => {
@@ -15,16 +17,6 @@ const CartCount = ({ id, radioData, size, count }) => {
    * 3. action의 payload는 Props로 받은 id, radioData, count 입니다.
    */
   const handleCartCountPlus = () => {
-    /** Redux Toolkit을 사용하지 않았을 때의 dispatch 입니다.  */
-    // dispatch({
-    //   type: 'INCREMENT_QUANTITY',
-    //   payload: {
-    //     id: id,
-    //     radioData: radioData,
-    //     count: count,
-    //   },
-    // });
-
     /** Redux Toolkit을 사용했을 때의 dispatch 입니다.  */
     dispatch(incrementQuantity({ id, radioData, count }));
   };
@@ -37,16 +29,6 @@ const CartCount = ({ id, radioData, size, count }) => {
    * 3. action의 payload는 Props로 받은 id, radioData, count 입니다.
    */
   const handleCartCountMinus = () => {
-    /** Redux Toolkit을 사용하지 않았을 때의 dispatch 입니다.  */
-    // dispatch({
-    //   type: 'DECREMENT_QUANTITY',
-    //   payload: {
-    //     id: id,
-    //     radioData: radioData,
-    //     count: count,
-    //   },
-    // });
-
     /** Redux Toolkit을 사용했을 때의 dispatch 입니다.  */
     dispatch(decrementQuantity({ id, radioData, count }));
   };
@@ -108,6 +90,11 @@ const CountInnerWrap = styled.div`
     background-color: transparent;
     font-size: inherit;
     cursor: pointer;
+  }
+
+  & > span {
+    width: 2rem;
+    text-align: center;
   }
 
   & > button:first-child {

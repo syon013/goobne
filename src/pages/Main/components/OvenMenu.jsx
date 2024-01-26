@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+import Loading from '../../../components/Loading/loading';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
-import Loading from '../../../components/Loading/loading';
-import { customAxios } from '../../../API/API';
-import { API } from '../../../config';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-coverflow';
+
 import styled from 'styled-components';
+import media from '../../../styles/media';
 
 /**
  * Main 페이지에 사용되는 Swiper 컴포넌트 입니다.
@@ -57,6 +61,20 @@ const OvenMenu = ({ scrollY }) => {
           effect={'coverflow'}
           slidesPerView={'4'}
           spaceBetween={100}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
           coverflowEffect={{
             rotate: 20, // 슬라이드 회전 각도
             stretch: 0, // 슬라이드 사이의 간격
@@ -108,6 +126,24 @@ const BandContainer = styled.section`
   & > .mySwiper {
     height: 400px;
   }
+
+  ${media.tablet`
+  height: 100vh;
+  padding-top: 150px;
+
+  & > .mySwiper {
+    height: 350px;
+  }
+  `}
+
+  ${media.mobile`
+    height : 100%;
+padding-top: 100px;
+
+    & > .mySwiper {
+    height: 250px;
+  }
+  `}
 `;
 
 const TitleWrap = styled.div`
@@ -128,6 +164,14 @@ const TitleWrap = styled.div`
     opacity: 1;
     top: 10%;
   }
+
+  ${media.tablet`
+    font-size: 40px;
+  `}
+
+  ${media.mobile`
+   font-size: 28px;
+  `}
 `;
 
 const SlideInnerWrap = styled.div`
@@ -171,4 +215,20 @@ const TextWrap = styled.div`
     font-weight: 700;
     color: ${props => props.theme.grayscaleA};
   }
+
+  ${media.tablet`
+  height: 60px;
+
+& span {
+  font-size: 20px;
+}
+  `}
+
+  ${media.mobile`
+  height: 35px;
+
+& span {
+  font-size: 18px;
+}
+  `}
 `;

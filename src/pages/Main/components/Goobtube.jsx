@@ -7,6 +7,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import media from '../../../styles/media';
 
 const Goobtube = () => {
   /** goobtube의 Data를 받아와 저장하기 위해 useState 생성 */
@@ -89,6 +90,17 @@ const Goobtube = () => {
           <Swiper
             spaceBetween={50}
             slidesPerView={3}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
             autoplay={{
               delay: 3500,
               disableOnInteraction: false,
@@ -151,6 +163,20 @@ const MainGoobtubeContainer = styled.section`
     font-weight: 800;
     font-family: 'Rubik', sans-serif;
   }
+
+  @media screen and (max-width: 768px) {
+    & > h2 {
+      top: 5%;
+      font-size: 48px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    & > h2 {
+      top: 5%;
+      font-size: 28px;
+    }
+  }
 `;
 
 const TextContainer = styled.div`
@@ -187,6 +213,18 @@ const TextSlide = styled.div`
       padding-right: 20px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    & > ul {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    & > ul {
+      font-size: 16px;
+    }
+  }
 `;
 
 const SlideContainer = styled.div`
@@ -208,6 +246,14 @@ const SlideContainer = styled.div`
 
     & a {
       height: 100%; // a태그의 height를 100%로 설정해야 이미지가 꽉차게 표시
+    }
+
+    @media screen and (max-width: 768px) {
+      height: 250px;
+    }
+
+    @media screen and (max-width: 500px) {
+      height: 200px;
     }
   }
 `;

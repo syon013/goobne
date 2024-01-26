@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+
+import { USER_INFO_DATA } from '../../../data/UserInfoData';
+
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import CheckBox from '../../../components/CheckBox/CheckBox';
-import { basic_test } from '../../../API/TEST_API';
-import { USER_INFO_DATA } from '../../../data/UserInfoData';
+
 // basic_test << 테스트용 api import 합니다.
 // import { customAxios } from '../../../API/API';
 // import { API } from '../../../config'; 테스트를 마치면 활성화 합니다.
+import { basic_test } from '../../../API/TEST_API';
+
 import styled from 'styled-components';
 
 const MemberLogin = () => {
@@ -22,10 +26,8 @@ const MemberLogin = () => {
   });
   /** 상수데이터로 만든 userData를 userInfo State에 저장하고, 로그인 성공 시 해당 데이터를 localStorage에 담아줍니다. */
   const [userInfo, setUserInfo] = useState(USER_INFO_DATA); //eslint-disable-line no-unused-vars
-
   /**아이디 저장 유무를 상태를 저장하는 useState를 정의합니다.*/
   const [isRemember, setIsRemember] = useState(true);
-
   /**
    * 1.useCookies구성은?
    * cookies= 객체형태입니다. cookies={key ,value} 구성됩니다.
@@ -35,12 +37,10 @@ const MemberLogin = () => {
    * 2.내 쿠키에 cookies객체에 접근할 key 값은 rememberUserId 로 정의합니다.
    */
   const [cookies, setCookie, removeCookie] = useCookies(['rememberUserId']);
-
   /**
    * useNavigate()를 navigate 변수에 담습니다.
    */
   const navigate = useNavigate();
-
   /**
    * 1.useEffect 실행됩니다.
    * 2.cookies 객체 rememberUserId키값으로 접근해 쿠키에 값이 있는지 없는지를 확인합니다.
@@ -57,7 +57,6 @@ const MemberLogin = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   /**
    * 1.onChange 이벤트가 발생할때마다 실행되는 함수입니다.
    * 2.input onChange event를 인자로 받습니다.
@@ -70,7 +69,6 @@ const MemberLogin = () => {
     const { name, value } = event.target;
     setUserLoginInfo({ ...userLoginInfo, [name]: value });
   };
-
   //특수문자 포함했는지 확인하는 정규식
   const alphanumericRegex = /^[a-zA-Z0-9]+$/;
   //영어숫자가 같이 조합됫는지 확인하는정규식
@@ -78,7 +76,6 @@ const MemberLogin = () => {
   //패스워드 영문 숫자 특수문자 포함 확인하는 정규식입니다.
   const passwordRegex =
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]+$/;
-
   /**
    * 1.params 변수에 userLoginInfo값을 정의합니다.
    * 2.response 변수 axios를 정의합니다.
@@ -103,7 +100,6 @@ const MemberLogin = () => {
       // const params = userLoginInfo;
       //  customAxios
       //   .post(API.LOGINPOST, params) //백엔드 서버 api입니다.
-
       basic_test(200) //테스트용 api입니다. 인자로 원하는 상태값을 넘겨주면됩니다.
         .then(res => {
           if (isRemember) {
@@ -130,7 +126,6 @@ const MemberLogin = () => {
         });
     }
   };
-
   /**
    * 1.로그인 버튼을 클릭시 submitBtn(event) 함수가 실행됩니다. 인자로는 버튼 이벤트를 받습니다.
    * 2.event.preventDefault(); 실행합니다. (submit실행시 기본 리랜더링을 막습니다.)
@@ -140,7 +135,6 @@ const MemberLogin = () => {
     event.preventDefault();
     requestLoginPost();
   };
-
   return (
     <>
       <LoginWrapForm onSubmit={submitBtn}>
@@ -164,7 +158,6 @@ const MemberLogin = () => {
             value={userLoginInfo.password}
             onChange={saveUserLoginInfo}
           />
-
           <CheckBox
             label="아이디 저장"
             onChange={e => {
@@ -172,7 +165,6 @@ const MemberLogin = () => {
             }}
             checked={isRemember}
           />
-
           <LoginBtnContainerDiv>
             <Button
               content="로그인"
@@ -184,20 +176,17 @@ const MemberLogin = () => {
           </LoginBtnContainerDiv>
         </fieldset>
       </LoginWrapForm>
-
       <FindContainerUl>
         <FindListItemLi>
           <Link to="/" className="findIdPw">
             아이디 찾기
           </Link>
         </FindListItemLi>
-
         <FindListItemLi>
           <Link to="/" className="findIdPw">
             비밀번호찾기
           </Link>
         </FindListItemLi>
-
         <FindListItemLi>
           <Link to="/">비회원 주문조회</Link>
         </FindListItemLi>
@@ -210,15 +199,18 @@ export default MemberLogin;
 
 const LoginWrapForm = styled.form`
   width: 100%;
+
   & > fieldset {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
+
   & > fieldset > legend {
     font-size: 0;
   }
 `;
+
 const LoginBtnContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -241,11 +233,13 @@ const FindListItemLi = styled.li`
     background-color: transparent;
     color: ${props => props.theme.grayscaleD};
   }
+
   & > .findIdPw {
     position: relative;
     border: none;
     background-color: transparent;
     color: ${props => props.theme.grayscaleD};
+
     &::after {
       background: ${props => props.theme.grayscaleD};
       position: absolute;

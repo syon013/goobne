@@ -11,6 +11,7 @@ import PostModal from './components/PostModal';
 import { idDuplicateCheck_test } from '../../API/TEST_API'; //테스트용 api 입니다.
 import { cert_test, basic_test } from '../../API/TEST_API'; //테스트용 api 입니다.
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 const Join = () => {
   /** 회원가입에 필요한 정보를 저장하는 useState를 정의합니다. */
@@ -338,10 +339,16 @@ const JoinContainerWrapSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 675px;
-  min-width: 550px;
+  max-width: 675px;
+  width: 100%;
   margin: 0 auto;
+  padding: 5px;
+
+  ${media.mobile`
+    padding : 0 10px;
+  `}
 `;
+
 const JoinHeading = styled.h2`
   font-weight: 900;
   font-size: 33px;
@@ -350,6 +357,7 @@ const JoinHeading = styled.h2`
 const FormContainerForm = styled.form`
   width: 100%;
 `;
+
 const Legend = styled.legend`
   font-size: 0;
 `;
@@ -359,6 +367,10 @@ const FormSelectBtnInner = styled.div`
   gap: 5px;
   width: 400px;
   margin: 80px auto 160px auto;
+
+  ${media.mobile`
+    width: 100%;
+  `}
 `;
 
 // userJoinInfo 데이터 정리 참고

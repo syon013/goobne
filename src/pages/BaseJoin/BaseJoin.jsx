@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Button from '../../components/Button/Button';
 import KakaoBtn from './components/kakaoBtn';
 import { useNavigate } from 'react-router-dom';
+import media from '../../styles/media';
 
 const BaseJoin = () => {
   /**
@@ -66,6 +67,12 @@ const BasejoinContainerSection = styled.section`
   width: 500px;
   min-width: 500px;
   margin: 0 auto;
+
+  ${media.mobile`
+    width : 100%;
+    min-width : 100%;
+    padding : 0 10px;
+  `}
 `;
 const BasejoinHeading = styled.h2`
   font-weight: 900;

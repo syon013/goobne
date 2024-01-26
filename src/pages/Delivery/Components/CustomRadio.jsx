@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../../../styles/media';
 
 /**
  *@property {string} type: radio                       - 라디오인풋의 타입을 정의합니다.
@@ -63,6 +64,12 @@ const DefaultRadio = styled.input`
     background-size: contain;
     border-radius: 50%;
   }
+
+  ${media.mobile`
+  &:checked + span::after {
+    top : 4px;
+  }
+  `}
 `;
 
 const RadioText = styled.span`
@@ -70,5 +77,9 @@ const RadioText = styled.span`
   padding: 0px 0px 0px 25px;
   font-size: 14px;
   user-select: none;
+
+  ${media.mobile`
+    font-size: 12px;
+  `}
 `;
 export default CustomRadio;

@@ -6,6 +6,7 @@ import Modal from '../Modal/Modal';
 import FooterTerms from '../Modal/FooterTerms';
 import FooterUserInfo from '../Modal/FooterUserInfo';
 import FooterEmailRefusal from '../Modal/FooterEmailRefusal';
+import media from '../../styles/media';
 
 /**
  * @default "#none"  - a태그의 링크기능을 무효화 하는것을 의미합니다.
@@ -192,6 +193,15 @@ const InnerTopSection = styled.section`
   border-bottom: 1px solid ${props => props.theme.transparentA};
   padding: 35px 0 30px 0;
   white-space: nowrap;
+
+  ${media.tablet`
+      flex-direction: column;
+      align-items : center;
+  `}
+
+  ${media.mobile`
+      flex-direction: column;
+  `}
 `;
 
 const InquirySubText = styled.span`
@@ -207,6 +217,10 @@ const InquiryNumber = styled.span`
   font-size: 40px;
   font-weight: 900;
   color: ${props => props.theme.grayscaleA};
+
+  ${media.mobile`
+    font-size: 30px;
+  `}
 `;
 
 const InfoArea = styled.div`
@@ -215,12 +229,25 @@ const InfoArea = styled.div`
   & > ul {
     display: flex;
     flex-direction: row;
+    white-space: normal;
 
     & > li {
       &:last-child {
         margin-top: 1px;
       }
     }
+
+    ${media.mobile`
+        flex-direction: column;
+        align-items : center;
+
+        & > li {
+          margin-top : 10px;
+          &:last-child {
+            margin-top: 10px;
+          }
+        }
+    `}
   }
 `;
 
@@ -232,6 +259,10 @@ const InfoAreaTargetButton = styled.button`
   font-weight: 700;
   cursor: pointer;
   color: ${props => props.theme.grayscaleA};
+
+  ${media.laptop`
+    margin-right: 10px;  
+  `}
 `;
 
 const InfoAreaTargetLink = styled.a`
@@ -240,6 +271,10 @@ const InfoAreaTargetLink = styled.a`
   font-weight: 700;
   font-family: 'sans-serif';
   color: ${props => props.theme.grayscaleA};
+
+  ${media.laptop`
+    margin-right: 10px;  
+  `}
 `;
 
 const SnsConnectionArea = styled.div`

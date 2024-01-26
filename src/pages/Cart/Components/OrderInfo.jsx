@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 const OrderInfo = () => {
@@ -9,7 +9,6 @@ const OrderInfo = () => {
     storePhone: '',
     store: '',
   });
-
   /** useEffect를 이용하여 userInfo key에 대한 값이 있다면, localStorage의 데이터를 가져옵니다.
    * 1. localStorage에 userInfo key에 대한 값이 있다면, userInfoData에 값을 저장합니다.
    * 2. 값이 있다면 userInfo 변수에 JSON.parse()를 이용하여 객체로 변환하여 저장합니다.
@@ -17,10 +16,8 @@ const OrderInfo = () => {
    */
   useEffect(() => {
     const localUserInfo = localStorage.getItem('userInfo');
-
     if (localUserInfo) {
       const userInfo = JSON.parse(localUserInfo);
-
       setUserInfoData({
         ...userInfoData,
         storeAddress: userInfo.storeAddress,
@@ -29,12 +26,10 @@ const OrderInfo = () => {
       });
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <OrderInfoMain>
       <OrderInfoTitleWrap>
         <h3>배달주문</h3>
-        <Link to="/delivery">변경</Link>
       </OrderInfoTitleWrap>
       <OrderInfoBox>
         <OrderInfoColumn>
@@ -53,11 +48,11 @@ const OrderInfo = () => {
     </OrderInfoMain>
   );
 };
-
 export default OrderInfo;
 
 const OrderInfoMain = styled.div`
   width: 100%;
+  padding: 0 10px;
   padding-bottom: 80px;
 `;
 
@@ -86,12 +81,14 @@ const OrderInfoBox = styled.section`
 `;
 
 const OrderInfoColumn = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 7fr;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   margin: 24px 0;
   font-size: 13px;
 `;
 
 const OrderInfoSubject = styled.span`
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 18px;
 `;

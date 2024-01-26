@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { customAxios } from '../../../API/API';
 import { API } from '../../../config';
 import Loading from '../../../components/Loading/loading';
 import Button from '../../../components/Button/Button';
+
 import styled from 'styled-components';
+import media from '../../../styles/media';
 
 const GoobNews = () => {
   /** newsData 데이터를 받아오기 위한 useState 생성 */
@@ -92,13 +95,33 @@ const MainContainer = styled.section`
 
   & > h2 {
     position: absolute;
-    top: 10%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%);
     font-size: 48px;
     font-weight: bold;
     font-family: 'Rubik';
   }
+
+  ${media.tablet`
+  min-height: 100vh;
+  padding: 0 50px;
+
+  & > h2 {
+    font-size: 40px;
+    top: 10%;
+  }
+  `}
+
+  ${media.mobile`
+  min-height: 100%;
+  padding: 0 40px;
+
+  & > h2 {
+    font-size: 28px;
+    top: 10%;
+  }
+  `}
 `;
 
 const MainInnerListWrap = styled.ul`
@@ -119,6 +142,14 @@ const MainInnerListWrap = styled.ul`
       }
     }
   }
+
+  ${media.tablet`
+  margin-top: 150px;
+  `}
+
+  ${media.mobile`
+  margin-top : 120px
+  `}
 `;
 
 const TextWrap = styled.div`
@@ -129,7 +160,9 @@ const TextWrap = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
+    font-size: 30px;
     padding: 50px 0;
+    padding-left: 50px;
 
     &:hover {
       background-color: ${props => props.theme.grayscaleH};
@@ -137,11 +170,10 @@ const TextWrap = styled.div`
     }
 
     & > span {
-      min-width: 480px;
-      padding-left: 50px;
-      font-size: 30px;
       font-weight: bold;
       white-space: nowrap; // 너무 긴 글자가 있을 경우 글자가 넘어가지 않고 한줄로 표시
+      width: 480px;
+      min-width: 480px;
 
       &:last-child {
         overflow: hidden; // 너무 긴 글자가 있을 경우 넘어가는 글자는 보이지 않도록 설정
@@ -150,6 +182,45 @@ const TextWrap = styled.div`
       }
     }
   }
+
+  ${media.laptop`
+
+  & > a {
+    padding: 30px 0;
+    font-size: 26px;
+    padding-left: 30px;
+
+  & > span {
+    width: 280px;
+    min-width: 280px;
+}}
+  `}
+
+  ${media.tablet`
+
+  & > a {
+    padding: 30px 0;
+    font-size: 22px;
+    padding-left: 30px;
+
+  & > span {
+    width: 220px;
+    min-width: 220px;
+}}
+`}
+
+  ${media.mobile`
+
+& > a {
+    padding: 20px 0;
+    font-size: 14px;
+    padding-left: 20px;
+ 
+  & > span {
+    width : 120px;
+    min-width: 120px;
+}}
+`}
 `;
 
 const ImgWrap = styled.div`
@@ -171,9 +242,28 @@ const ImgWrap = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  ${media.tablet`
+    top: -100px;
+    right: 60px;
+    width: 300px;
+    height: 200px;
+  `}
+
+  ${media.mobile`
+    top: -60px;
+    right: 20px;
+    width: 200px;
+    height: 150px;
+  `}
 `;
 
 const ButtonWrap = styled.div`
   width: 300px;
   margin-top: 50px;
+
+  ${media.mobile`
+  width: 200px;
+  margin: 30px 0;
+  `}
 `;
