@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+
 import Button from '../Button/Button';
+
+import styled from 'styled-components';
 
 /** Main 첫 랜더링 시 보여줄 Modal Popup Content 입니다. */
 const MainModalContent = ({ ModalClose }) => {

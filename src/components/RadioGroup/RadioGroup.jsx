@@ -1,6 +1,7 @@
 import Radio from '../Radio/Radio';
-import styled from 'styled-components';
 import RADIO_GROUP_DATA from '../../data/RadioGroupData';
+
+import styled from 'styled-components';
 
 const RadioGroup = () => {
   return (

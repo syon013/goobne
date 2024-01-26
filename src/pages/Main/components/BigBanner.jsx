@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+
 import Loading from '../../../components/Loading/loading';
-import { customAxios } from '../../../API/API';
+
 import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+import media from '../../../styles/media';
 
 // Import Swiper styles
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
 import styled from 'styled-components';
-import media from '../../../styles/media';
 
 const BigBanner = () => {
   /** BigBanner의 데이터를 받아오기 위한 useState 생성 */

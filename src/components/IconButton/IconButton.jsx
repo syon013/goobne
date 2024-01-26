@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { ReactComponent as Blog } from '../../svg/Footer/FooterBlogIconBtn.svg';
 import { ReactComponent as Facebook } from '../../svg/Footer/FooterFacebookIcon.svg';
 import { ReactComponent as Instagram } from '../../svg/Footer/FooterInstagramIcon.svg';
@@ -7,6 +6,8 @@ import { ReactComponent as Cart } from '../../svg/Global/GlobalCartIconBtn.svg';
 import { ReactComponent as Close } from '../../svg/Global/GlobalCloseIconBtn.svg';
 import { ReactComponent as KaKao } from '../../svg/Global/GlobalKaKaoIconBtn.svg';
 import { ReactComponent as List } from '../../svg/Header/HeaderListIconBtn.svg';
+
+import styled from 'styled-components';
 
 /**
  * IconButton props list

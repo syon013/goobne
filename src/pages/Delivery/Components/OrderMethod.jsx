@@ -1,7 +1,9 @@
-import styled from 'styled-components';
 import Button from '../../../components/Button/Button';
 import CustomRadio from './CustomRadio';
+
 import media from '../../../styles/media';
+
+import styled from 'styled-components';
 
 const OrderMethod = () => {
   return (

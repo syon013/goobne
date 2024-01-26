@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+
 import { ReactComponent as ModalClose } from '../../svg/Modal/ModalClose.svg';
-import styled from 'styled-components';
 import media from '../../styles/media';
+
+import styled from 'styled-components';
 
 /**
  * Modal props list

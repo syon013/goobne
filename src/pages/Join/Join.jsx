@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import Button from '../../components/Button/Button';
 import BasicInfo from './components/BasicInfo';
 import AdditionalInfo from './components/AdditionalInfo';
 import RecommenderInfo from './components/RecommenderInfo';
 import AgreementInfo from './components/AgreementInfo';
 import PostModal from './components/PostModal';
-// import { customAxios } from '../../API/API'; 테스트를 마치면 활성화 합니다.
-// import { API } from '../../../config'; 테스트를 마치면 활성화 합니다.
+
 import { idDuplicateCheck_test } from '../../API/TEST_API'; //테스트용 api 입니다.
 import { cert_test, basic_test } from '../../API/TEST_API'; //테스트용 api 입니다.
-import styled from 'styled-components';
 import media from '../../styles/media';
+
+import styled from 'styled-components';
 
 const Join = () => {
   /** 회원가입에 필요한 정보를 저장하는 useState를 정의합니다. */

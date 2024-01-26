@@ -1,5 +1,6 @@
 import Lottie from 'react-lottie';
 import Loading from '/public/data/Loading.json';
+
 import styled from 'styled-components';
 
 const LottieComponent = () => {

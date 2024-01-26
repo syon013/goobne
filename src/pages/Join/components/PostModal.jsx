@@ -1,9 +1,9 @@
 import IconButton from '../../../components/IconButton/IconButton';
 
 import DaumPostcode from 'react-daum-postcode';
+import media from '../../../styles/media';
 
 import styled from 'styled-components';
-import media from '../../../styles/media';
 
 const PostModal = ({ setIsAddressFind, setUserJoinInfo, userJoinInfo }) => {
   // complete 함수 정의: 주소 검색이 완료되면 실행되는 콜백 함수

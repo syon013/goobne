@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 import { addCart } from '../../Redux/Redux';
+
 import Button from '../Button/Button';
+
 import styled from 'styled-components';
 
 /**

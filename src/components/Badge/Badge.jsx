@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
 import { ReactComponent as BadgePepperIcon } from '../../svg/Badge/BadgePepperIcon.svg';
+
+import styled, { css } from 'styled-components';
 
 /**
  *  Badge Component props list

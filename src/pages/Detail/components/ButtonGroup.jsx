@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import Button from '../../../components/Button/Button';
+
 import styled from 'styled-components';
 
 /** Detail 에서 사용되는 버튼에 대한 그룹 컴포넌트 입니다. */

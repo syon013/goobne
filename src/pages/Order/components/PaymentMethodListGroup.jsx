@@ -1,5 +1,6 @@
 import PaymentMethodList from './PaymentMethodList';
 import PAYMENT_METHOD_LIST_DATA from '../../../data/PaymentMethodListData';
+
 import media from '../../../styles/media';
 
 import styled from 'styled-components';

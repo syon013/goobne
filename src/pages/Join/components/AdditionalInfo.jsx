@@ -1,7 +1,9 @@
 import Radio from '../../../components/Radio/Radio';
 import SelectBox from '../../../components/SelectBox/SelectBox';
+
 import { getDays, getMonths, getYears } from '../../../data/BirthData';
 import { RADIO_GROUP_DATA } from '../../../data/RadioGroupData';
+
 import styled from 'styled-components';
 
 /**

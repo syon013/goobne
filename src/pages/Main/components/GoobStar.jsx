@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { customAxios } from '../../../API/API';
-import { API } from '../../../config';
 import { ReactComponent as GoobstarIcon } from '../../../svg/Main/MainInstar.svg';
 import Loading from '../../../components/Loading/loading';
+
+import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+import media from '../../../styles/media';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import media from '../../../styles/media';
 import styled from 'styled-components';
 
 const GoobStar = () => {

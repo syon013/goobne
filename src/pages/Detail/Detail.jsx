@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
 import { _requestDetailDataGet } from '../../API/TEST_API';
+
 import { useDispatch } from 'react-redux';
 import { addCart } from '../../Redux/Redux';
+
+import media from '../../styles/media';
+
 import Badge from '../../../src/components/Badge/Badge';
 import Button from '../../components/Button/Button';
 import RadioGroup from './components/RadioGroup';
 import Count from '../../components/Count/Count';
 import DropDown from '../../components/DropDown/DropDown';
+
 import styled, { css } from 'styled-components';
-import media from '../../styles/media';
 
 const Detail = () => {
   /** detail Page에 대한 Data를 저장하는 useState 입니다. */

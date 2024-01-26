@@ -1,12 +1,16 @@
-import styled from 'styled-components';
-import IconButton from '../IconButton/IconButton';
 import { useState } from 'react';
+
+import IconButton from '../IconButton/IconButton';
+
 import Portal from '../Modal/Portal';
 import Modal from '../Modal/Modal';
 import FooterTerms from '../Modal/FooterTerms';
 import FooterUserInfo from '../Modal/FooterUserInfo';
 import FooterEmailRefusal from '../Modal/FooterEmailRefusal';
+
 import media from '../../styles/media';
+
+import styled from 'styled-components';
 
 /**
  * @default "#none"  - a태그의 링크기능을 무효화 하는것을 의미합니다.
