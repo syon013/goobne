@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
+
+import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 import styled from 'styled-components';
-import { customAxios } from '../../../API/API';
-import { API } from '../../../config';
 
 // 주문방법선택 페이지 내의 배너를 위한 컴포넌트
 const DeliverySwiper = () => {

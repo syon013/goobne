@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { customAxios } from '../../../API/API';
 import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+import media from '../../../styles/media';
+
 import Loading from '../../../components/Loading/loading';
 import Button from '../../../components/Button/Button';
 
 import styled from 'styled-components';
-import media from '../../../styles/media';
 
 const GoobNews = () => {
   /** newsData 데이터를 받아오기 위한 useState 생성 */

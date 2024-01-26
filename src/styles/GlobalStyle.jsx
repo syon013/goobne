@@ -1,7 +1,9 @@
-import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+
 import NanumSquareRoundR from '../../public/fonts/NanumSquareRoundR.ttf';
 import Rubik from '../../public/fonts/RubikRegular.ttf';
+
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};

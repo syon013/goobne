@@ -1,8 +1,10 @@
 import { useState } from 'react';
+
 import Portal from './Portal';
 import Modal from './Modal';
-import styled from 'styled-components';
 import TestComponent from './TestComponent';
+
+import styled from 'styled-components';
 
 const Test = () => {
   // modal을 여닫기 위한 state

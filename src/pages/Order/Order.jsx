@@ -12,9 +12,9 @@ import PaymentMethodListGroup from './components/PaymentMethodListGroup';
 import { ORDER_SELECT_BOX_DATA } from '../../data/OrderSelectBoxData';
 import { ORDER_RIDER_SELECT_BOX_DATA } from '../../data/OrderRiderSelectBoxData';
 import { basic_test } from '../../API/TEST_API';
+import media from '../../styles/media';
 
 import styled from 'styled-components';
-import media from '../../styles/media';
 
 const Order = () => {
   /** 결제 페이지에 필요한 모든 정보를 담는 useState를 정의합니다. */

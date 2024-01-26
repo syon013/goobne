@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import CheckBox from '../../../components/CheckBox/CheckBox';
+
 import styled from 'styled-components';
 
 /**

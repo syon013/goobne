@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import media from '../../../styles/media';
+
+import styled from 'styled-components';
 
 /**
  *@property {string} type: radio                       - 라디오인풋의 타입을 정의합니다.

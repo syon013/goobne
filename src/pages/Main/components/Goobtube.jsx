@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+
 import Loading from '../../../components/Loading/loading';
-import { customAxios } from '../../../API/API';
+
 import { API } from '../../../config';
+import { customAxios } from '../../../API/API';
+import media from '../../../styles/media';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+
 import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
-import media from '../../../styles/media';
 
 const Goobtube = () => {
   /** goobtube의 Data를 받아와 저장하기 위해 useState 생성 */
@@ -164,19 +168,15 @@ const MainGoobtubeContainer = styled.section`
     font-family: 'Rubik', sans-serif;
   }
 
-  @media screen and (max-width: 768px) {
-    & > h2 {
+  ${media.tablet`
       top: 5%;
       font-size: 48px;
-    }
-  }
+  `}
 
-  @media screen and (max-width: 500px) {
-    & > h2 {
+  ${media.mobile`
       top: 5%;
       font-size: 28px;
-    }
-  }
+  `}
 `;
 
 const TextContainer = styled.div`
@@ -214,17 +214,17 @@ const TextSlide = styled.div`
     }
   }
 
-  @media screen and (max-width: 768px) {
+  ${media.tablet`
     & > ul {
       font-size: 20px;
     }
-  }
+  `}
 
-  @media screen and (max-width: 500px) {
+  ${media.mobile`
     & > ul {
       font-size: 16px;
     }
-  }
+  `}
 `;
 
 const SlideContainer = styled.div`
@@ -248,13 +248,13 @@ const SlideContainer = styled.div`
       height: 100%; // a태그의 height를 100%로 설정해야 이미지가 꽉차게 표시
     }
 
-    @media screen and (max-width: 768px) {
-      height: 250px;
-    }
+    ${media.tablet`
+    height: 250px;
+  `}
 
-    @media screen and (max-width: 500px) {
-      height: 200px;
-    }
+    ${media.mobile`
+    height: 200px;
+  `}
   }
 `;
 

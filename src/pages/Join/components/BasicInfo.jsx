@@ -6,9 +6,9 @@ import CheckBox from '../../../components/CheckBox/CheckBox';
 import { EMAIL_DATA } from '../../../data/EmailData';
 
 import { basic_test } from '../../../API/TEST_API';
+import media from '../../../styles/media';
 
 import styled, { css } from 'styled-components';
-import media from '../../../styles/media';
 
 /**
  * BasicInfo props list

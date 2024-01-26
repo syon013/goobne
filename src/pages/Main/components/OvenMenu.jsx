@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { API } from '../../../config';
 import { customAxios } from '../../../API/API';
+import media from '../../../styles/media';
+
 import Loading from '../../../components/Loading/loading';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,7 +14,6 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-coverflow';
 
 import styled from 'styled-components';
-import media from '../../../styles/media';
 
 /**
  * Main 페이지에 사용되는 Swiper 컴포넌트 입니다.

@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+
 import BigBanner from './components/BigBanner';
 import OvenMenu from './components/OvenMenu';
 import GoobNews from './components/GoobNews';
 import GoobStar from './components/GoobStar';
 import Goobtube from './components/Goobtube';
-import styled from 'styled-components';
 import Portal from '../../components/Modal/Portal';
 import Modal from '../../components/Modal/Modal';
 import MainModalContent from '../../components/Modal/MainModalContent';
+
+import styled from 'styled-components';
 
 const Main = () => {
   /** Scroll Y값을 저장하기 위한 state */

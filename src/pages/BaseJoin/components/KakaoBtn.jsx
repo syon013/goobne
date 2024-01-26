@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 const KakaoBtn = ({ onClick }) => {
   return (
     <KakaoBtnButton onClick={onClick} type="button">

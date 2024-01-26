@@ -1,7 +1,8 @@
-import styled from 'styled-components';
 import OrderInfo from './Components/OrderInfo';
 import OrderDetail from './Components/OrderDetail';
 import CartSwiper from './Components/CartSwiper';
+
+import styled from 'styled-components';
 
 const Cart = () => {
   return (

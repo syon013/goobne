@@ -1,6 +1,8 @@
-import styled from 'styled-components';
 import LottieComponent from '../LottieComponents/LottieComponents';
+
 import media from '../../styles/media';
+
+import styled from 'styled-components';
 
 const Loading = () => {
   return (

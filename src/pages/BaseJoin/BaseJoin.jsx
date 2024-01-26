@@ -1,8 +1,11 @@
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 import Button from '../../components/Button/Button';
 import KakaoBtn from './components/kakaoBtn';
-import { useNavigate } from 'react-router-dom';
+
 import media from '../../styles/media';
+
+import styled from 'styled-components';
 
 const BaseJoin = () => {
   /**
