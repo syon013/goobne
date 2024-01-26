@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import CheckBox from '../../../components/CheckBox/CheckBox';
-import { cert_test, basic_test } from '../../../API/TEST_API'; //테스트 api 입니다.
+
 // cert_test, basic_test 테스트 import 합니다.
 // import { customAxios } from '../../../API/API';  통신 테스트를 마치면 활성화 합니다.
 // import { API } from '../../../config'; // 통신 테스트를 마치면 활성화 합니다.
+import { cert_test, basic_test } from '../../../API/TEST_API'; //테스트 api 입니다.
+
 import styled from 'styled-components';
 
 const NonMemberLogin = () => {
@@ -19,20 +22,15 @@ const NonMemberLogin = () => {
     phoneNum: '',
     certificationNum: null,
   });
-
   /**테스트를 하기위해 서버로 보낸 내가입력한 핸드폰번호를 저장하는 useState를 정의합니다. 테스트를 하기위해 */
   const [severCertificationNum, setServerCertificationNum] = useState(null);
-
   const [ServerPhoneNum, setServerPhoneNum] = useState(null);
-
   /**이용 약관 동의 체크여부를 정의하는 useState 입니다.*/
   const [isAgreementCheck, setIsAgreementCheck] = useState(false);
-
   /**
    * useNavigate()를 navigate 변수에 담습니다.
    */
   const navigate = useNavigate();
-
   /**
    * 1.onChange 이벤트가 발생할때마다 실행되는 함수입니다.
    * 2.input onChange event를 인자로 받습니다.
@@ -45,7 +43,6 @@ const NonMemberLogin = () => {
     const { name, value } = event.target;
     setNonMemberUserInfo({ ...nonMemberUserInfo, [name]: value });
   };
-
   /**
    * 인증번호를 불러오는 get test axios입니다.
    * 1.인증번호를 불러오기 위한 필수값에 입력이 체크 및 입력이 되어있는지 확인합니다.
@@ -81,7 +78,6 @@ const NonMemberLogin = () => {
         });
     }
   };
-
   /**
    * 1.테스트 axios를 사용중 입니다.
    * 2.인증번호를 확인합니다. 임의로 만든 인증번호와 시용자가 적은 인증번호가 일치하는지 확인합니다.(타입이 스트링이기때문에 넘버로 형변환을 해줍니다.)
@@ -96,7 +92,6 @@ const NonMemberLogin = () => {
       // const params = nonMemberUserInfo;
       //  customAxios
       //   .post(API.NONMEMBER_LOGIN_POST, params)
-
       basic_test(
         severCertificationNum === Number(nonMemberUserInfo.certificationNum)
           ? 200
@@ -113,7 +108,6 @@ const NonMemberLogin = () => {
         });
     }
   };
-
   /**
    * 1.비회원사용자정보는 제출하는 함수입니다.
    * 2.약관동의 체크는 필수값이기때문에 Verification 한번더 체크합니다.
@@ -135,7 +129,6 @@ const NonMemberLogin = () => {
       requestNonMemberLoginPost();
     }
   };
-
   return (
     <>
       <NonLoginWrapForm onSubmit={submitBtn}>
@@ -180,7 +173,6 @@ const NonMemberLogin = () => {
           />
         </fieldset>
       </NonLoginWrapForm>
-
       <AgreementWrapDiv>
         <CheckBox
           label="(필수) 이용약관에 모두 동의합니다."
@@ -189,7 +181,6 @@ const NonMemberLogin = () => {
           }}
           checked={isAgreementCheck}
         />
-
         <ul>
           <AgreementItemLi>
             <AgreementContentSpan>개인정보 수집/이용</AgreementContentSpan>
@@ -197,7 +188,6 @@ const NonMemberLogin = () => {
               내용보기{'>'}
             </AgreementContentButton>
           </AgreementItemLi>
-
           <AgreementItemLi>
             <AgreementContentSpan>위치기반 서비스 이용</AgreementContentSpan>
             <AgreementContentButton type="button">
@@ -206,7 +196,6 @@ const NonMemberLogin = () => {
           </AgreementItemLi>
         </ul>
       </AgreementWrapDiv>
-
       <NonMemBerOrderContainer>
         <Button
           color="black"
@@ -232,19 +221,23 @@ const NonLoginWrapForm = styled.form`
     display: flex;
     flex-direction: column;
   }
+
   & > fieldset > legend {
     font-size: 0;
   }
+
   label {
     font-size: 0px;
   }
 `;
+
 const PhoneAuthenticationDiv = styled.div`
   display: flex;
   align-items: flex-end;
   width: 100%;
   margin: 15px 0px;
 `;
+
 const BtnInner = styled.div`
   width: 200px;
   margin-left: 5px;
@@ -257,6 +250,7 @@ const AgreementWrapDiv = styled.div`
   width: 100%;
   margin-bottom: 30px;
 `;
+
 const AgreementItemLi = styled.li`
   display: flex;
   justify-content: space-between;
@@ -268,6 +262,7 @@ const AgreementContentSpan = styled.span`
   font-size: 12px;
   color: ${props => props.theme.grayscaleE};
 `;
+
 const AgreementContentButton = styled.button`
   border: none;
   background-color: transparent;
@@ -275,6 +270,7 @@ const AgreementContentButton = styled.button`
   font-size: 12px;
   cursor: pointer;
 `;
+
 const NonMemBerOrderContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;

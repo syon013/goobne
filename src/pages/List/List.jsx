@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { customAxios } from '../../API/API';
+
 import ItemComponent from './components/ItemComponent';
 import MenuChipGroup from '../../components/Chip/MenuChipGroup';
 import Loading from '../../components/Loading/loading';
-import { customAxios } from '../../API/API';
+
+import media from '../../styles/media';
 import styled from 'styled-components';
 
 const List = () => {
   /** 프로덕트 리스트를 데이터를 담을 useState를 정의합니다. */
   const [productListData, setProductListData] = useState([]);
-
   /**로딩페이지를 토글할 useState를 정의합니다. */
   const [loading, setLoading] = useState(true);
-
   /**
    * useNavigate()를 navigate 변수에 담습니다.
    */
   const navigate = useNavigate();
-
   /**
    * 1.useEffect 실행됩니다.
    * 2.productList값이 바뀔때마다 chipSelect 세터함수를 실행합니다.
@@ -26,7 +27,6 @@ const List = () => {
     setLoading(true);
     chipSelect('All');
   }, []);
-
   /**
    * 1.chip버튼이 클릭되면 이벤트인자로 chip에 category를 인자로 받습니다.
    * 2.axios get메서드가 카테고리에 맞는 json목데이터를 불러옵니다.
@@ -43,7 +43,6 @@ const List = () => {
       console.log(error);
     }
   };
-
   /**
    * 1.클릭이벤트 감지될때마다 실행되는 함수입니다.
    * 2.아이템에 고유에 id를 인자로 받습니다.
@@ -52,18 +51,15 @@ const List = () => {
   const listItemClick = id => {
     navigate(`/detail/${id}`);
   };
-
   return (
     <>
       {loading && <Loading />}
       <ListWrapMain>
         <ListContainerSection>
           <h2>메뉴보기</h2>
-
           <ButtonWrapDiv>
             <MenuChipGroup chipSelect={chipSelect}></MenuChipGroup>
           </ButtonWrapDiv>
-
           {productListData.length > 0 ? (
             <ListContainerUl>
               {productListData?.map(
@@ -88,7 +84,7 @@ const List = () => {
           ) : (
             <NotDataImgInnerWrap>
               <img
-                src="https://ryushin01.github.io/goobne/images/notData.png"
+                src="https://leechengwon.github.io/goobne/images/notData.png"
                 alt="메뉴가 없음 이미지"
               />
             </NotDataImgInnerWrap>
@@ -112,7 +108,7 @@ const ListContainerSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1300px;
+  max-width: 1300px;
   margin: 0 auto;
   & > h2 {
     font-weight: 900;
@@ -129,9 +125,21 @@ const ListContainerUl = styled.ul`
   row-gap: 50px;
   margin-bottom: 200px;
 
-  @media (max-width: 1300px) {
-    grid-template-columns: 1fr 1fr; /* 각 아이템이 한 열에 하나씩 쌓이도록 설정 */
-  }
+  ${media.desktop`
+    grid-template-columns: 1fr 1fr 1fr; /* 각 아이템이 한 열에 하나씩 쌓이도록 설정 */
+  `}
+
+  ${media.laptop`
+  grid-template-columns: 1fr 1fr; /* 각 아이템이 한 열에 하나씩 쌓이도록 설정 */
+  `}
+
+  ${media.tablet`
+  grid-template-columns: 1fr 1fr;
+  `}
+
+  ${media.mobile`
+  grid-template-columns: 1fr;
+  `}
 `;
 
 const ListItemLi = styled.li`
@@ -141,9 +149,23 @@ const ListItemLi = styled.li`
   &:first-child {
     grid-column: span 2;
     grid-row: span 2;
+
+    ${media.tablet`
+      display: none;
+      grid-column: span 1;
+      grid-row: span 1;
+    `}
+
+    ${media.mobile`
+      display: none;
+      grid-column: span 1;
+      grid-row: span 1;
+    `}
+  
     .emphasisContainer {
       width: 100%;
     }
+
     .emphasisImgWrap {
       position: relative;
       display: flex;
@@ -153,28 +175,63 @@ const ListItemLi = styled.li`
       align-items: center;
       justify-content: center;
       border-radius: 10px;
+
+      ${media.laptop`
+        width: 500px;
+        height: 500px;
+      `}
     }
+
     .emphasisImgInner {
       width: 400px;
       height: 400px;
+
+      ${media.laptop`
+        width: 300px;
+        height: 400px;
+      `}
     }
+
     .emphasisTitleInner {
       font-size: 50px;
+
+      ${media.laptop`
+        font-size: 30px;
+      `}
     }
 
     .emphasisTitlePriceWrap {
       margin-top: 40px;
       width: 100%;
+
+      ${media.laptop`
+        margin-top: 40px;
+        width: 100%;
+      `}
     }
+
     .emphasisPriceInner {
       font-size: 30px;
+
+      ${media.laptop`
+        font-size: 20px;
+      `}
     }
+
     .emphasisCartIconBtn {
       width: 40px;
       position: absolute;
       right: 15px;
       top: 40px;
+
+      ${media.laptop`
+        width: 30px;
+        position: absolute;
+        right: 110px;
+        top: 20px;
+      `}
     }
+
     .emphasisBadge {
       position: absolute;
       top: 0;
@@ -199,6 +256,7 @@ const ButtonWrapDiv = styled.div`
     width: 100px;
   }
 `;
+
 const NotDataImgInnerWrap = styled.div`
   display: flex;
   justify-content: center;

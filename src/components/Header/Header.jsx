@@ -8,6 +8,7 @@ import { ReactComponent as Cart } from '../../svg/Header/HeaderCartIcon.svg';
 import Nav from '../Nav/Nav';
 import IconButton from '../IconButton/IconButton';
 import styled, { css } from 'styled-components';
+import media from '../../styles/media';
 
 const Header = () => {
   /** Scroll Y값을 저장하기 위한 state */
@@ -241,16 +242,26 @@ const HeaderInnerWrap = styled.section`
 
 const HeaderLogo = styled.div`
   display: flex;
+  cursor: pointer;
   width: 150px;
   min-width: 150px;
-  cursor: pointer;
+
+  ${media.tablet`
+  width : 100px;
+  min-width: 100px;
+ `}
+
+  ${media.mobile`
+  width : 90px;
+  min-width: 80px;
+  `}
 `;
 
 const AddressWrap = styled.div`
   display: flex;
   align-items: center;
-  height: 28px;
   background-color: rgba(255, 255, 255, 0.5);
+  height: 26px;
   border-radius: 20px;
   padding: 0 10px;
 
@@ -260,6 +271,26 @@ const AddressWrap = styled.div`
     font-size: 15px;
     font-weight: bold;
   }
+
+  //  768px 미만일 경우
+  ${media.tablet`
+  height: 20px;
+  border-radius: 20px;
+  padding: 0 5px;
+
+  & > a {
+    white-space: nowrap;
+    padding: 0 20px;
+    font-size: 12px;
+    font-weight: bold;
+    }
+  `}
+
+  // 425px 미만일 경우
+  ${media.mobile`
+    display : none;
+  
+  `}
 `;
 
 const MenuWrap = styled.div`
@@ -288,6 +319,47 @@ const MenuWrap = styled.div`
         display: flex;
       }
     }
+
+    // 1024px 미만일 경우
+    ${media.laptop`
+
+    &:first-child{
+      margin : 0;
+      padding : 0;
+    }
+    
+    &:nth-child(n+2):nth-child(-n+5) {
+      display : none;
+    }
+    `}
+
+    // 768px 미만일 경우 
+    ${media.tablet`
+    font-size: 16px;
+
+    &:first-child{
+      margin : 0;
+      padding : 0;
+    }
+    
+    &:nth-child(n+2):nth-child(-n+5) {
+      display : none;
+    }
+    `}
+
+    // 425px 미만일 경우
+    ${media.mobile`
+    font-size: 14px;
+
+    &:first-child{
+      margin : 0;
+      padding : 0;
+    }
+    
+    &:nth-child(n+2):nth-child(-n+5) {
+      display : none;
+    }
+    `}
   }
 
   & > ul > li > a {
@@ -313,6 +385,25 @@ const SignWrap = styled.div`
         font-family: 'Rubik';
         padding: 0 15px;
         white-space: nowrap;
+
+        ${media.tablet`
+  
+        &:nth-child(-n+2) {
+          display : none;
+       }
+     `}
+
+        ${media.mobile`
+
+        &:nth-child(-n+2) {
+          display : none;
+        }
+
+        &:last-child {
+          display : none;
+          padding-right : 0;
+        }
+      `}
       }
     }
   }
@@ -321,7 +412,26 @@ const SignWrap = styled.div`
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-weight: bold;
   }
+
+  ${media.laptop`
+  
+  `}
+
+  ${media.tablet`
+  
+
+  & li {
+        &:nth-child(-n):nth-child(n+2) {
+          display : none;
+      }
+    }
+  `}
+
+  ${media.mobile`
+  
+  `}
 `;
 
 const SubMenuWrap = styled.ul`
@@ -347,6 +457,24 @@ const SubMenuWrap = styled.ul`
       }
     }
   }
+
+  ${media.tablet`
+      padding : 10px 10px;
+
+    & > li > a > span {
+      font-size : 15px;
+      padding : 0 5px;
+    }
+    `}
+
+  ${media.mobile`
+    padding : 10px 10px;
+
+    & > li > a > span {
+      font-size : 13px;
+      padding : 0 3px;
+}
+    `}
 `;
 
 const CartWrap = styled.div`

@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button';
 import OrderMethod from './Components/OrderMethod';
 import DeliverySwiper from './Components/DeliverySwiper';
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 /** 배달주소 선택할 수 있는 페이지 입니다. (선택은 불가능) */
 const Delivery = () => {
@@ -56,7 +57,16 @@ const FlexBetween = `
 const DeliveryMain = styled.main`
   width: 100%;
   height: 100%;
+  padding: 0 20px;
   background-color: ${props => props.theme.grayscaleB};
+
+  ${media.tablet`
+    padding : 0 20px;
+  `}
+
+  ${media.mobile`
+    padding : 0 10px;
+  `}
 `;
 
 const DeliveryWrap = styled.section`
@@ -75,6 +85,10 @@ const MethodTitle = styled.span`
   ${FlexCenter};
   font-size: 30px;
   font-weight: 800;
+
+  ${media.mobile`
+    font-size : 24px;
+  `}
 `;
 
 const DeliveryMethod = styled.div`
@@ -85,6 +99,11 @@ const DeliveryMethod = styled.div`
 const DeliveryMethodBottom = styled.div`
   ${FlexBetween};
   margin-bottom: 40px;
+
+  ${media.mobile`
+    flex-direction : column;
+    align-items : center;
+  `}
 `;
 
 const DeliveryBottomLeft = styled.ul`
@@ -105,10 +124,21 @@ const DeliveryBottomLeft = styled.ul`
       display: none;
     }
   }
+
+  ${media.mobile`
+    font-size : 14px;
+    text-align : left;
+  `};
 `;
 
 const DeliveryBottomRight = styled.div`
   ${FlexBetween};
   flex-direction: column;
   font-size: 14px;
+
+  ${media.mobile`
+    font-size : 14px;
+    padding-top : 20px;
+    gap : 10px;
+  `}
 `;

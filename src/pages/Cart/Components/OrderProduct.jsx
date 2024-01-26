@@ -1,14 +1,19 @@
 import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import CartCount from './CartCount';
-import styled from 'styled-components';
 import { deleteCart } from '../../../Redux/Redux';
 
+import CartCount from './CartCount';
+import media from '../../../styles/media';
+
+import styled from 'styled-components';
+
 const OrderProduct = () => {
-  /** deliveryFee(배달비)를 받아오기 위한 state 초기값 3,000원으로 고정 */
-  const [deliveryFee, setDeliveryFee] = useState(3000);
   /** redux의 dispatch를 사용하기 위한 변수 입니다. */
   const dispatch = useDispatch();
+
+  /** deliveryFee(배달비)를 받아오기 위한 state 초기값 3,000원으로 고정 */
+  const deliveryFee = 3000;
 
   /** Redux에 저장한 장바구니 데이터를 useSelector를 이용하여 state에 담아줍니다. */
   const state = useSelector(state => {
@@ -17,15 +22,6 @@ const OrderProduct = () => {
 
   /** 장바구니에 담긴 데이터를 개별 삭제하는 기능입니다. */
   const CartDataDelete = (id, radioData) => {
-    /** Redux Toolkit을 사용하지 않았을 때의 dispatch 입니다.  */
-    // dispatch({
-    //   type: 'DELETE_CART',
-    //   payload: {
-    //     id: id,
-    //     radioData: radioData,
-    //   },
-    // });
-
     /** Redux Toolkit을 사용했을 때의 dispatch 입니다.  */
     dispatch(deleteCart({ id, radioData }));
   };
@@ -51,7 +47,7 @@ const OrderProduct = () => {
           <tbody>
             {state.map(({ id, src, alt, name, price, count, radioData }) => (
               <OrderTableBody key={name}>
-                <td colSpan={2}>
+                <td>
                   <OrderProductWrap>
                     <OrderProductImg>
                       <img src={src} alt={alt} />
@@ -69,7 +65,7 @@ const OrderProduct = () => {
                     />
                   </OrderCountWrap>
                 </td>
-                <td colSpan={2}>
+                <td>
                   <OrderPriceWrap>
                     <span>{`${(price * count).toLocaleString('ko-KR')}`}</span>{' '}
                     원
@@ -130,7 +126,6 @@ const FlexCenter = `
 const OrderTableBody = styled.tr`
   border-bottom: 1px solid ${props => props.theme.grayscaleC};
   position: relative;
-
   &:last-child {
     border-bottom: 2px solid ${props => props.theme.grayscaleC};
   }
@@ -138,12 +133,10 @@ const OrderTableBody = styled.tr`
   & > td {
     padding: 30px 10px;
     vertical-align: middle;
-
     & h4 {
       font-size: 13px;
       font-weight: 700;
     }
-
     & span {
       font-size: 13px;
     }
@@ -152,16 +145,33 @@ const OrderTableBody = styled.tr`
 
 const OrderProductWrap = styled.div`
   ${FlexCenter};
+
+  ${media.mobile`
+    flex-direction: column;
+    white-space: nowrap;
+
+    & > h4 {
+      padding-top: 5px;
+    }
+  `}
 `;
 
 const OrderProductImg = styled.div`
   width: 70px;
   margin-right: 15px;
+
+  ${media.mobile`
+    width : 40px;
+  `}
 `;
 
 const OrderCountWrap = styled.div`
   width: 110px;
   margin: 0 auto;
+
+  ${media.mobile`
+    width: 70px;
+  `}
 `;
 
 const OrderPriceWrap = styled.div`
@@ -182,11 +192,19 @@ const TotalPriceWrap = styled.div`
   font-weight: 700;
   text-align: center;
 
-  & > span {
-    margin: 0 20px;
+  ${media.mobile`
+    font-size: 12px;
+  `}
 
+  & > span {
+    margin: 0 5px;
     &:last-child {
       font-size: 20px;
+
+      ${media.mobile`
+        display: inline-block;
+        padding-top: 10px;
+      `}
     }
 
     &:nth-child(2) {
@@ -200,15 +218,22 @@ const TotalAmountBox = styled.span`
 `;
 
 const ProductDeleteBtnWrap = styled.div`
-  width: 28px;
-  top: 40%;
-  right: 10px;
   position: absolute;
+  width: 28px;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 
   & > button {
     border: none;
     cursor: pointer;
   }
+
+  ${media.mobile`
+    width: 20px;
+    top: 10%;
+    transform: translateY(0);
+  `}
 `;
 
 const CartEmptyBox = styled.tr`

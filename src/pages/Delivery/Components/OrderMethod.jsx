@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '../../../components/Button/Button';
 import CustomRadio from './CustomRadio';
+import media from '../../../styles/media';
 
 const OrderMethod = () => {
   return (
@@ -78,8 +79,17 @@ const OrderBottom = styled.div`
   & > span {
     color: ${props => props.theme.grayscaleI};
   }
+
+  ${media.mobile`
+    flex-direction: column;
+  `}
 `;
 
 const ButtonWrap = styled.div`
   width: 15%;
+
+  ${media.mobile`
+    width: 100%;
+    padding-bottom : 20px;
+  `}
 `;

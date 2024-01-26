@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAllCart } from '../../../Redux/Redux';
+
 import OrderProduct from './OrderProduct';
 import Button from '../../../components/Button/Button';
+import media from '../../../styles/media';
+
 import styled from 'styled-components';
 
 const OrderDetail = () => {
@@ -47,23 +51,21 @@ const OrderDetail = () => {
       </OrderDetailTitleWrap>
       <OrderProductTable>
         <colgroup>
-          <col width="10%" />
           <col width="40%" />
-          <col width="25%" />
-          <col width="20%" />
-          <col width="5%" />
+          <col width="30%" />
+          <col width="30%" />
         </colgroup>
         <thead>
           <OrderTableHead>
-            <th colSpan={2}>메뉴</th>
+            <th>메뉴</th>
             <th>수량</th>
-            <th colSpan={2}>금액</th>
+            <th>금액</th>
           </OrderTableHead>
         </thead>
         <OrderProduct />
       </OrderProductTable>
       <ButtonWrap>
-        <OrderBtn>
+        <OrderBtnAdd>
           <Button
             size="large"
             color="beige"
@@ -72,7 +74,7 @@ const OrderDetail = () => {
               navigate('/list');
             }}
           />
-        </OrderBtn>
+        </OrderBtnAdd>
         <OrderBtnRight>
           <OrderBtn>
             <Button size="large" color="beige" content="쿠폰함" />
@@ -83,7 +85,12 @@ const OrderDetail = () => {
               color="black"
               content="주문하기"
               onClick={() => {
-                navigate('/order', { state: cartData });
+                // cartData가 비어있는 배열인지 확인
+                if (!cartData || cartData.length === 0) {
+                  alert('장바구니가 비어있습니다.');
+                } else {
+                  navigate('/order', { state: cartData });
+                }
               }}
             />
           </OrderBtn>
@@ -102,11 +109,13 @@ const FlexBetween = `
 
 const OrderDetailMain = styled.div`
   width: 100%;
+  padding: 0 10px;
   padding-bottom: 80px;
 `;
 
 const OrderDetailTitleWrap = styled.div`
   ${FlexBetween};
+  align-items: center;
   padding-bottom: 7px;
   border-bottom: 1px solid ${props => props.theme.grayscaleH};
 
@@ -119,7 +128,6 @@ const OrderDetailTitleWrap = styled.div`
 
 const DeleteAllBtnWrap = styled.div`
   width: 110px;
-
   & > button {
     font-size: 13px;
   }
@@ -146,6 +154,13 @@ const OrderTableHead = styled.tr`
 const ButtonWrap = styled.div`
   ${FlexBetween};
   margin-top: 30px;
+
+  ${media.tablet`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  `}
 `;
 
 const OrderBtnRight = styled.div`
@@ -158,4 +173,12 @@ const OrderBtn = styled.div`
   align-items: center;
   width: 180px;
   position: relative;
+
+  ${media.mobile`
+    width: 110px;
+  `}
+`;
+
+const OrderBtnAdd = styled.div`
+  width: 180px;
 `;

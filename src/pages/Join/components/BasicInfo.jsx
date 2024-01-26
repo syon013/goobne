@@ -2,9 +2,13 @@ import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import SelectBox from '../../../components/SelectBox/SelectBox';
 import CheckBox from '../../../components/CheckBox/CheckBox';
+
 import { EMAIL_DATA } from '../../../data/EmailData';
+
 import { basic_test } from '../../../API/TEST_API';
+
 import styled, { css } from 'styled-components';
+import media from '../../../styles/media';
 
 /**
  * BasicInfo props list
@@ -44,7 +48,6 @@ const BasicInfo = ({
       // const params = userJoinInfo.certificationNum;
       // const response = customAxios
       //   .post(JOIN_POST, params) //백엔드 서버 api입니다.
-
       basic_test(
         severCertificationNum === Number(userJoinInfo.certificationNum)
           ? 200
@@ -59,7 +62,6 @@ const BasicInfo = ({
         });
     }
   };
-
   /**
    * useState로 선언한 객체형태의 값들의 데이터를 키:벨류 형태로 넣어주기 위하여 생성된 함수입니다.
    * @param {*} value - 셀렉트 박스에서 선택된 벨류 값을 인자로 받아옵니다.
@@ -74,7 +76,6 @@ const BasicInfo = ({
       [name]: value,
     });
   };
-
   return (
     <BasicInfoSection>
       <InfoGuideInnerDiv>
@@ -84,7 +85,6 @@ const BasicInfo = ({
           <span> 표시는 반드시 입력하셔야 하는 항목입니다.</span>
         </div>
       </InfoGuideInnerDiv>
-
       <InfoNameInnerDiv>
         <Input
           label="이름"
@@ -96,19 +96,17 @@ const BasicInfo = ({
           onChange={saveUserJoinInfo}
         />
       </InfoNameInnerDiv>
-
       {/* 아이디 중복체크 인풋 영역 */}
       <IdWrapDiv>
         <Input
           label="아이디"
           required="required"
-          placeholder="영어+숫자가 7글자 이상 특수문자 제외"
+          placeholder="아이디를 입력하세요."
           type="text"
           direction="column"
           name="id"
           onChange={saveUserJoinInfo}
         />
-
         <DoubleCheckBtnInnerDiv>
           <Button
             content="중복확인"
@@ -119,29 +117,26 @@ const BasicInfo = ({
           />
         </DoubleCheckBtnInnerDiv>
       </IdWrapDiv>
-
       <Input
         label="비밀번호"
         required="required"
-        placeholder="영문/숫자/특수문자포함 11자리이상 입력하세요."
+        placeholder="비밀번호를 입력하세요."
         type="password"
         direction="column"
         name="password"
         onChange={saveUserJoinInfo}
         onWheel={e => e.target.blur()}
       />
-
       <Input
         label="비밀번호 확인"
         required="required"
-        placeholder="영문/숫자/특수문자포함 11자리이상 입력하세요."
+        placeholder="확인 비밀번호를 입력하세요."
         type="password"
         direction="column"
         name="confirmPassword"
         onChange={saveUserJoinInfo}
         onWheel={e => e.target.blur()}
       />
-
       <Input
         label="이메일"
         required="required"
@@ -151,7 +146,6 @@ const BasicInfo = ({
         name="email"
         onChange={saveUserJoinInfo}
       />
-
       <EmailWrapDiv>
         <span>@</span>
         <Input
@@ -173,7 +167,6 @@ const BasicInfo = ({
           onChange={value => saveRequestUserInfo(value, 'emailAddress')}
         />
       </EmailWrapDiv>
-
       <CheckBox
         label="정보/이벤트 메일 수신에 동의합니다."
         onChange={e => {
@@ -184,13 +177,12 @@ const BasicInfo = ({
         }}
         checked={userJoinInfo.emailReceptionCheck}
       />
-
       <PhoneAuthenticationWrapDiv>
         <Input
           label="휴대폰번호"
           required="required"
           direction="column"
-          placeholder="- 없이 휴대폰 번호를 입력하세요."
+          placeholder="- 없이 입력하세요."
           name="phoneNum"
           onChange={saveUserJoinInfo}
           type="number"
@@ -206,7 +198,6 @@ const BasicInfo = ({
           />
         </SandAuthenticationBtnInnerDiv>
       </PhoneAuthenticationWrapDiv>
-
       <CheckBox
         label="정보/이벤트 SNS 수신에 동의합니다."
         onChange={e => {
@@ -237,7 +228,6 @@ const BasicInfo = ({
           />
         </CertificationBtnInner>
       </CertificationWrap>
-
       <AddressSearchWrap>
         <Input
           direction="column"
@@ -255,7 +245,6 @@ const BasicInfo = ({
           />
         </AddressSearchBtnInner>
       </AddressSearchWrap>
-
       <Input
         direction="column"
         placeholder="주소"
@@ -274,10 +263,12 @@ const BasicInfo = ({
 };
 
 export default BasicInfo;
+
 const FlexGap = css`
   display: flex;
   gap: 5px;
 `;
+
 /** 기본정보 스타일 시작 */
 const BasicInfoSection = styled.section`
   width: 100%;
@@ -299,10 +290,12 @@ const InfoGuideInnerDiv = styled.div`
     font-size: 20px;
     font-weight: 800;
   }
+
   & > div > span {
     font-size: 12px;
     font-weight: 800;
   }
+
   & > div > .emphasis {
     color: red;
   }
@@ -319,6 +312,10 @@ const IdWrapDiv = styled.div`
 
 const DoubleCheckBtnInnerDiv = styled.div`
   width: 150px;
+
+  ${media.mobile`
+    width: 100px;
+  `}
 `;
 
 const EmailWrapDiv = styled.div`
@@ -334,6 +331,10 @@ const PhoneAuthenticationWrapDiv = styled.div`
 
 const SandAuthenticationBtnInnerDiv = styled.div`
   width: 300px;
+
+  ${media.mobile`
+    width: 200px;
+  `}
 `;
 
 const CertificationWrap = styled.div`
@@ -344,6 +345,10 @@ const CertificationWrap = styled.div`
 
 const CertificationBtnInner = styled.div`
   width: 300px;
+
+  ${media.mobile`
+    width: 200px;
+  `}
 `;
 
 const AddressSearchWrap = styled.div`
@@ -354,5 +359,9 @@ const AddressSearchWrap = styled.div`
 
 const AddressSearchBtnInner = styled.div`
   width: 300px;
+
+  ${media.mobile`
+    width: 200px;
+  `}
 `;
 /** 기본정보 스타일 하단 끝 */

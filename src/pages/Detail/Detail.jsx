@@ -9,6 +9,7 @@ import RadioGroup from './components/RadioGroup';
 import Count from '../../components/Count/Count';
 import DropDown from '../../components/DropDown/DropDown';
 import styled, { css } from 'styled-components';
+import media from '../../styles/media';
 
 const Detail = () => {
   /** detail Page에 대한 Data를 저장하는 useState 입니다. */
@@ -56,20 +57,6 @@ const Detail = () => {
    * 1. dispatch를 이용하여 payload data를 addCart로 보내줍니다.
    */
   const putInCartData = () => {
-    /** Redux Toolkit을 사용하지 않았을 때의 dispatch 입니다.  */
-    // dispatch({
-    //   type: 'ADD_CART',
-    //   payload: {
-    //     id: detailData?.id,
-    //     radioData: Number(radioData),
-    //     name: currentProductDetailData.title,
-    //     price: currentProductDetailData.price,
-    //     count: count,
-    //     src: currentProductDetailData.image,
-    //     alt: currentProductDetailData.alt,
-    //   },
-    // });
-
     /** Redux Toolkit을 사용했을 때의 dispatch 입니다.  */
     dispatch(
       addCart({
@@ -190,6 +177,16 @@ const ContainerInnerWrap = styled.section`
     font-size: 34px;
     font-weight: 900;
   }
+
+  ${media.tablet`
+    width: 100%;
+    min-width: 100%;
+  `}
+
+  ${media.mobile`
+    width: 100%;
+    min-width: 100%;
+  `}
 `;
 
 const DetailWrap = styled.div`
@@ -197,12 +194,20 @@ const DetailWrap = styled.div`
   justify-content: center;
   width: 100%;
   padding-top: 100px;
+
+  ${media.tablet`
+    flex-direction : column;
+  `}
+
+  ${media.mobile`
+    flex-direction : column;
+  `}
 `;
 
 const DetailInfoWrap = styled.div`
   width: 50%;
   height: 100%;
-  padding: 0 50px;
+  padding: 0 10px;
 
   & > div:first-child {
     width: 500px;
@@ -214,6 +219,29 @@ const DetailInfoWrap = styled.div`
   img {
     aspect-ratio: 1/1;
   }
+
+  ${media.tablet`
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    flex-direction: column;
+    width : 100%;
+  `}
+
+  ${media.mobile`
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    flex-direction: column;
+    width : 100%;
+
+    & > div:first-child {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  `}
 `;
 
 const DetailInfo = styled.div`
@@ -221,6 +249,16 @@ const DetailInfo = styled.div`
   flex-direction: column;
   margin-top: 5px;
   gap: 5px;
+
+  ${media.tablet`
+    width : 100%;
+    padding : 50px 0;
+  `}
+
+  ${media.mobile`
+    width : 100%;
+    padding : 50px 0;
+  `}
 `;
 
 const DetailInnerWrap = styled.div`
@@ -228,6 +266,15 @@ const DetailInnerWrap = styled.div`
   width: 50%;
   flex-direction: column;
   padding: 0 50px;
+
+  ${media.tablet`
+    width : 100%;
+  `}
+
+  ${media.mobile`
+    width : 100%;
+    padding : 0 10px;
+  `}
 `;
 
 const BadgeWrap = styled.div`

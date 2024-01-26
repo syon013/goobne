@@ -4,39 +4,33 @@ import IconButton from '../IconButton/IconButton';
 import { customAxios } from '../../API/API';
 import { API } from '../../config';
 import styled from 'styled-components';
-
+import media from '../../styles/media';
 /**
  * Nav props list
  * @property {function} setNavToggle                             - useState 세터함수를 정의합니다.
  * @property {Hook} NavToggle                                    - useState 값을 정의합니다.
  */
-
 const Nav = ({ navToggle, setNavToggle }) => {
   /** 로컬스토리지에 토큰값을 token 변수에 담습니다. */
   const token = localStorage.getItem('accessToken');
-
   /**
    * 1.useEffect 실행됩니다.
    * 2.useEffect 실행되면서 axios get 메서드가 실행되면 response받은 데이터를 담아놓을
    * useState를 정의합니다.
    */
   const [navListData, setNavListData] = useState([]);
-
   /** 유저 정보를 담는 useState 정의합니다. */
   const [userInfoData, setUserInfoData] = useState({});
-
   /**
    * useNavigate()를 navigate 이름으로 변수로 지정합니다.
    */
   const navigate = useNavigate();
-
   /**
   requestNavListDataGet 실행 됩니다.
    */
   useEffect(() => {
     requestNavListDataGet();
   }, []);
-
   /** useEffect를 이용하여 userInfo key에 대한 값이 있다면, localStorage의 데이터를 가져옵니다.
    * 1. localStorage에 userInfo key에 대한 값이 있다면, userInfoData에 값을 저장합니다.
    * 2. 값이 있다면 userInfo 변수에 JSON.parse()를 이용하여 객체로 변환하여 저장합니다.
@@ -44,17 +38,14 @@ const Nav = ({ navToggle, setNavToggle }) => {
    */
   useEffect(() => {
     const localUserInfo = localStorage.getItem('userInfo');
-
     if (localUserInfo) {
       const userInfo = JSON.parse(localUserInfo);
-
       setUserInfoData({
         ...userInfoData,
         name: userInfo.name,
       });
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   /**
    * NavList에서 클릭된 콘텐츠의 open 상태를 토글합니다.
    * 1. 클릭이 된 함수의 id,path 를 받아옵니다.
@@ -81,7 +72,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
       }),
     );
   };
-
   /**
    * 1.setNavToggle 세터함수는 Navcomponent를 토글하는 useState 세터함수입니다.
    * 2.부모에서 props로 받은 setNavToggle 사용하여 NavToggle 값을 false 변경하여 Navcomponent를 close하는 함수입니다.
@@ -89,7 +79,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
   const navClose = () => {
     setNavToggle(false);
   };
-
   /**
    * 1.setNavToggle 세터함수는 Navcomponent를 토글하는 useState 세터함수입니다.
    * 2.로그인 페이지로 navigate 해주는 함수입니다.
@@ -98,7 +87,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
     navigate('/login');
     setNavToggle(false);
   };
-
   /**
    * 1.setNavToggle 세터함수는 Navcomponent를 토글하는 useState 세터함수입니다.
    * 2.회원가입 페이지로 navigate 해주는 함수입니다.
@@ -107,7 +95,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
     navigate('/basejoin');
     setNavToggle(false);
   };
-
   /**
    * 1.axios로직을 담을 requestNavListDataGet  변수를 지정합니다.
    * 2.axios를 get메서드로 필요한 NavListData를 요청합니다.
@@ -121,7 +108,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
       alert('에러 발생');
     }
   };
-
   /**
    * 1.로그아웃 버튼 클릭시 실행되는 함수입니다.
    * 2.로컬스토리지에 accessToken 값을 삭제합니다.
@@ -133,7 +119,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
     setNavToggle(false);
     navigate('/');
   };
-
   /**
    * stopPropagation() 란? JavaScript의 Event 인터페이스에서 제공하는 내장 메소드입니다.
    * 그 목적은 캡처 및 버블링 단계 모두에서 현재 이벤트의 추가 전파를 중지하는 것입니다.
@@ -146,7 +131,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
     event.stopPropagation();
     setNavToggle(false);
   };
-
   return (
     <NavContainerBgDiv
       className={navToggle ? 'showNav' : ''}
@@ -164,7 +148,7 @@ const Nav = ({ navToggle, setNavToggle }) => {
         {token ? (
           <LogOutWrapDiv>
             <div>
-              <span>{`${userInfoData.name} 반갑습니다.`}</span>
+              <span>회원님 반갑습니다.</span>
             </div>
             <LogOutBtnInnerDiv>
               <button type="button" onClick={logOut}>
@@ -182,11 +166,9 @@ const Nav = ({ navToggle, setNavToggle }) => {
             </JoinBtnButton>
           </LoginJoinBtnContainerDiv>
         )}
-
         <ImgBannerContainerDiv>
-          <img src="../goobne/images/banner.png" alt="르세라핀배너" />
+          <img src="/goobne/images/banner.png" alt="르세라핀배너" />
         </ImgBannerContainerDiv>
-
         <nav>
           <ParentsAccordionContainerUl>
             {navListData?.map(({ id, label, depth, path, open }, index) => {
@@ -201,7 +183,6 @@ const Nav = ({ navToggle, setNavToggle }) => {
                   >
                     {label}
                   </NavAccordionButton>
-
                   {/* open 값이 있다면 보여지는 UI입니다. */}
                   {open && (
                     <ChildAccordionContainerUl>
@@ -221,10 +202,9 @@ const Nav = ({ navToggle, setNavToggle }) => {
             })}
           </ParentsAccordionContainerUl>
         </nav>
-
         <NavCallNumBerContainerDl>
-          <dt>주문전화</dt>
-          <dd>031-112-119</dd>
+          <dt>박요진 전화</dt>
+          <dd>010-8412-1456</dd>
         </NavCallNumBerContainerDl>
       </NavContainerDiv>
     </NavContainerBgDiv>
@@ -269,6 +249,11 @@ const NavContainerDiv = styled.div`
   &.showNavContent {
     padding: 20px;
     width: 500px;
+
+    ${media.mobile`
+      width: 100%;
+      padding: 0px;
+    `}
   }
 
   &::-webkit-scrollbar {
@@ -297,6 +282,7 @@ const LoginJoinBtnContainerDiv = styled.div`
   width: 100%;
   padding: 50px 0px 70px 50px;
 `;
+
 const LoginBtnButton = styled.button`
   position: relative;
   border: none;
@@ -306,7 +292,6 @@ const LoginBtnButton = styled.button`
   font-weight: 700;
   cursor: pointer;
   margin-right: 20px;
-
   &::after {
     position: absolute;
     content: '';
@@ -331,14 +316,23 @@ const JoinBtnButton = styled.button`
 
 const ImgBannerContainerDiv = styled.div`
   width: 500px;
-`;
 
+  ${media.mobile`
+    width : 100%;
+  `}
+`;
 const ParentsAccordionContainerUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
   padding: 50px 0px 50px 60px;
+
+  ${media.mobile`
+    padding: 0px 0px;
+    margin-top: 60px;
+    padding-left: 10px;
+  `}
 `;
 
 const ParentsAccordionListLi = styled.li`
@@ -354,6 +348,12 @@ const NavAccordionButton = styled.button`
   padding-right: 25px;
   margin-bottom: 20px;
   position: relative;
+  color: ${props => props.theme.grayscaleH};
+
+  ${media.mobile`
+    font-size: 20px;
+    font-weight: 900;
+  `}
 
   &.DownArrow::after {
     content: '';
@@ -365,7 +365,12 @@ const NavAccordionButton = styled.button`
     height: 20px;
     background-image: url('https://syon013.github.io/goobne/images/Nav/NavDownArrow.svg');
     background-repeat: no-repeat;
+
+    ${media.mobile`
+      top: 0px;
+    `}
   }
+
   &.UpArrow::after {
     content: '';
     display: block;
@@ -376,6 +381,10 @@ const NavAccordionButton = styled.button`
     height: 20px;
     background-image: url('https://syon013.github.io/goobne/images/Nav/NavUpArrow.svg');
     background-repeat: no-repeat;
+
+    ${media.mobile`
+      top: 0px;
+    `}
   }
 `;
 
@@ -401,6 +410,13 @@ const NavCallNumBerContainerDl = styled.dl`
   font-size: 20px;
   font-weight: 900;
   padding: 0px 0px 50px 60px;
+
+  ${media.mobile`
+    padding: 0px 0px;
+    margin-top: 60px;
+    padding-left: 10px;
+    gap: 10px;
+  `}
 `;
 
 // 로그인했을때 스타일 컴포넌트
@@ -412,11 +428,17 @@ const LogOutWrapDiv = styled.div`
   width: 100%;
   border-bottom: 3px solid ${props => props.theme.primaryColor};
   margin: 30px 0px;
+
   & > div > span {
     font-size: 20px;
     font-weight: 900;
+
+    ${media.mobile`
+      padding-left : 10px;
+    `}
   }
 `;
+
 const LogOutBtnInnerDiv = styled.div`
   & > button {
     background-color: ${props => props.theme.primaryColor};

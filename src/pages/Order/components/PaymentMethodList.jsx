@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 /**
  *@property {string} type: radio                       - 라디오인풋의 타입을 정의합니다.
  *@property {string} name                              - 라디오인풋 그룹의 이름을 지정 및 그중 한가지만 선택가능함을 정의합니다.
@@ -19,7 +18,6 @@ const PaymentMethod = ({
   const handleRadioDataGet = e => {
     onChange(e.target.value);
   };
-
   return (
     <RadioContainer {...props}>
       <PaymentRadio
@@ -37,16 +35,14 @@ const PaymentMethod = ({
     </RadioContainer>
   );
 };
-
 //라디오 text를 클릭시 체크상태가 이루어지기위하여 라벨링.
 const RadioContainer = styled.div`
-  width: 100%;
-  height: 70px;
+  width: 70px;
+  height: 60px;
   border: 1px solid ${props => props.theme.grayscaleH};
   cursor: pointer;
   position: relative;
 `;
-
 //라디오 속성값을 정의합니다.
 const PaymentRadio = styled.input`
   width: 100%;
@@ -54,13 +50,11 @@ const PaymentRadio = styled.input`
   appearance: none;
   cursor: pointer;
   color: ${props => props.theme.grayscaleA};
-
   &:checked {
     width: 100%;
     height: 100%;
     background-color: ${props => props.theme.grayscaleH};
   }
-
   &:checked + label {
     background-color: ${props => props.theme.grayscaleH};
     color: white;
@@ -68,30 +62,26 @@ const PaymentRadio = styled.input`
     width: 100%;
     height: 25px;
     cursor: pointer;
-
     & img {
       filter: invert(98%) sepia(61%) saturate(6693%) hue-rotate(183deg)
         brightness(123%) contrast(98%);
     }
   }
 `;
-
 const RadioLabel = styled.label`
   position: absolute;
-  top: 65%;
+  bottom: 0;
   left: 0;
   font-size: 14px;
   width: 100%;
   text-align: center;
   cursor: pointer;
 `;
-
 const LabelImage = styled.img`
   position: absolute;
-  top: -34px;
-  left: 18px;
+  top: -35px;
+  left: 20px;
   width: 30px;
   height: 30px;
 `;
-
 export default PaymentMethod;

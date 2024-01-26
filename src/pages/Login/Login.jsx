@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import MemberLogin from './components/MemberLogin';
 import NonMemberLogin from './components/NonMemberLogin';
 import Button from '../../components/Button/Button';
 import IconButton from '../../components/IconButton/IconButton';
+
 import styled from 'styled-components';
+import media from '../../styles/media';
 
 const Login = () => {
   /**
@@ -12,12 +15,10 @@ const Login = () => {
    * 초기값은 'member' 회원로그인창을 의미 합니다.
    */
   const [selectedTab, setSelectedTab] = useState('member');
-
   /**
    * useNavigate()를 navigate 이름으로 변수로 지정합니다.
    */
   const navigate = useNavigate();
-
   /**
    * 1.TabBtnButton 컴포넌트에서 onClick이벤트를 감지합니다.
    * 2.handleTabClick 이벤트 함수에는 인자로 'member' 또는 'nonMember'  스트링값을 인자로 전달됩니다.
@@ -29,16 +30,13 @@ const Login = () => {
   const handleTabClick = tab => {
     setSelectedTab(tab);
   };
-
   const goBasicJoin = () => {
     navigate('/basejoin');
   };
-
   return (
     <LoginContainerMain>
       <LoginContainerSection>
         <h2>로그인</h2>
-
         <LoginTabContainerDiv>
           <TabBtnButton
             type="button"
@@ -55,17 +53,8 @@ const Login = () => {
             비회원주문
           </TabBtnButton>
         </LoginTabContainerDiv>
-
         {selectedTab === 'member' && <MemberLogin />}
         {selectedTab === 'nonMember' && <NonMemberLogin />}
-
-        <CouponBannerImgInner>
-          <img
-            src="../../../../goobne/images/couponBanner.png"
-            alt="쿠폰배너"
-          />
-        </CouponBannerImgInner>
-
         <JoinMemberContainerDiv>
           <h3>아직 회원이 아니신가요?</h3>
           <Button
@@ -76,7 +65,6 @@ const Login = () => {
             onClick={goBasicJoin}
           />
         </JoinMemberContainerDiv>
-
         <EasyLoginContainerDiv>
           <h3>SNS 간편 회원가입</h3>
           <IconButton content="kakao" size="bigLarge" />
@@ -99,19 +87,25 @@ const LoginContainerSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
-  min-width: 500px;
+  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
   & > h2 {
     font-weight: 900;
     font-size: 33px;
   }
+
+  ${media.mobile`
+    padding : 0 10px;
+  `}
 `;
+
 const LoginTabContainerDiv = styled.div`
   display: flex;
   width: 100%;
   margin: 40px 0px 20px 0px;
 `;
+
 const TabBtnButton = styled.button`
   width: 100%;
   border: none;
@@ -128,14 +122,6 @@ const TabBtnButton = styled.button`
   cursor: pointer;
 `;
 
-const CouponBannerImgInner = styled.div`
-  width: 100%;
-  height: 250px;
-  & > img {
-    width: 100%;
-    height: 100%;
-  }
-`;
 const JoinMemberContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -158,6 +144,7 @@ const EasyLoginContainerDiv = styled.div`
   width: 100%;
   padding: 0px 20px;
   margin-bottom: 100px;
+
   & > h3 {
     font-size: 13px;
     font-weight: 700;
